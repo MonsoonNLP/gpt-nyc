@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>GPT-NYC and beyond</title>
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+    <h1>You're training a custom GPT-X to generate text</h1>
+    <h2>and evaluating if it works, and avoiding writing toxic stuff, hopefully</h2>
+    <h3>an interactive</h3>
+
+    <hr/>
+    <h3>Someone recommends that we meet to talk about your text-generation idea.
+      <button onclick="aboutme(event)">About me</button>
+      <div id="aboutme" class="hide">
+        I'm a full stack developer, consultant, dropout.
+        <br/>In 2020 I released language models for Hindi, Tamil, Bangla, and more.
+        Then people started citing them in papers and putting them in the spaCy docs? It's been wild.
+        <br/>
+        <small>(As of 2021, I recommend using Google's MuRIL instead).</small>
+      </div>
+    </h3>
+    <p>
+      We're not going to listen to gatekeepers in Machine Learning (ML).
+      You can understand just about everything that ML/NLP professionals know for certain.
+      <br/>
+      Sure, there are people who have more resources and training, and you will need to let that go before making your cool idea happen.
+    </p>
+
+    <hr/>
+
+    <h3>Generating text requires the right kind of model</h3>
+    <p>
+      Maybe you heard a little about OpenAI's GPT-2 or GPT-3 models before today.
+      <a href="https://www.twilio.com/blog/what-is-gpt-3" target="_blank">
+        <button>No, what is that?</button>
+      </a>
+      <span class="hide">https://www.twilio.com/blog/what-is-gpt-3</span>
+    </p>
+    <p>
+      These models went through an initial / pre-training phase on a huge amount of mostly-English text, run on many GPUs,
+      to the point that the text coming out looks partway fluent. The primary difference between GPT-2, GPT-3, and future models is more training and more compute.
+    </p>
+
+    <p>
+      Maybe you DM'd me about using Hindi-BERT or BETO (Spanish BERT) to start writing text in your language.
+      <button onclick="aboutlangs(event)">Yes, ¡vámonos!</button>
+    </p>
+    <div id="aboutlangs" class="hide">
+      <strong>Sorry!</strong> Most non-English models are BERT type.
+      <table border="1">
+        <thead>
+          <tr>
+            <td>Common Model Arch.</td>
+            <td>Initial / Pre-Training</td>
+            <td>Fine-tuning</td>
+            <td>Generating long text</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BERT / RoBERTa</td>
+            <td>fills in a [blank] in a sentence</td>
+            <td>trainable on classification/regression/inference tasks</td>
+            <td>no</td>
+          </tr>
+          <tr>
+            <td>seq2seq</td>
+            <td>encoder/decoder models</td>
+            <td>translation, summarization, gender transform, etc.</td>
+            <td>no</td>
+          </tr>
+          <tr>
+            <td>GPT</td>
+            <td>predicts next word/token in a sentence</td>
+            <td>trainable on new text / document styles</td>
+            <td>YES &check;</td>
+          </tr>
+          <tr>
+            <td>new thing you saw</td>
+            <td>don't know</td>
+            <td>don't know</td>
+            <td>the tutorial is about GPT</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        If you need to first train a non-English GPT model, check out
+        <a href="https://colab.research.google.com/github/huggingface/notebooks/blob/master/examples/causal_language_modeling_flax.ipynb">this HuggingFace notebook</a>
+        to start from scratch,
+        <a href="https://medium.com/ai-innovation/beginners-guide-to-retrain-gpt-2-117m-to-generate-custom-text-content-8bb5363d8b7f">this notebook</a>
+        to start with English GPT weights,
+        and the <a href="https://arxiv.org/abs/2012.15520">AraGPT2 paper</a> for a sample of a working, non-English GPT model.
+      </p>
+    </div>
+
+    <h3>Tell the model to do what we want</h3>
+    <p>
+      We have four tools to combine to adapt these existing models to our goals:
+      <ul>
+        <li>Fine-tuning - continue training on a text dataset to imitate its rules or style</li>
+        <li>Prompt engineering - test initial examples and wording that leads the model to respond well to the input</li>
+        <li>Adding words or control tokens to expand vocabulary, set format of text (i.e. Q & A)</li>
+        <li>Removing or moving word embeddings to change output [messy]</li>
+      </ul>
+      Here's the cool thing - if you're comfortable with Python, you can do any of these! Impress your friends!
+    </p>
+
+    <script src="app.js"></script>
+  </body>
+</html>
