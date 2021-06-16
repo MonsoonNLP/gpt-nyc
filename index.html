@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
-    <h1>You're training a custom GPT-X to generate text</h1>
+    <h1>We're training a custom GPT-X to generate text</h1>
     <h2>and evaluating if it works, and avoiding writing toxic stuff, hopefully</h2>
     <h3>an interactive</h3>
 
@@ -106,6 +106,19 @@
         <li>Removing or moving word embeddings to change output [messy]</li>
       </ul>
       Here's the cool thing - if you're comfortable with Python, you can do any of these! Impress your friends!
+      <br/>
+      This page is going to follow my GPT-NYC project with a mix of fine-tuning and new vocabulary.
+      Prompt engineering is not my expertise, so I would send you
+        <a href="https://blog.andrewcantino.com/blog/2021/04/21/prompt-engineering-tips-and-tricks/">a blog post</a>
+        or
+        <a href="https://arxiv.org/abs/2102.07350">a research paper</a>
+        depending on what is a good reading format for you.
+    </p>
+    <p>
+      We are going to get it done in three parts:
+      - scan a text corpus for new tokens; edit GPT-2 (because it is more manageable)
+      - fine-tune GPT-2 on the text corpus; publish model
+      - evaluate outputs of the custom model
     </p>
 
     <script src="app.js"></script>
